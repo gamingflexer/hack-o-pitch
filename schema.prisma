@@ -1,0 +1,31 @@
+datasource db {
+    url      = "file:db.sqlite3"
+    provider = "sqlite"
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Project {
+    id          Int      @id @default(autoincrement())
+    name        String
+    description String?
+    buckets     Bucket[]
+}
+
+model Bucket {
+    id        Int      @id @default(autoincrement())
+    name      String
+    Project   Project? @relation(fields: [projectId], references: [id])
+    projectId Int?
+    files     File[]
+}
+
+model File {
+    id       Int     @id @default(autoincrement())
+    cid      String
+    name     String
+    Bucket   Bucket? @relation(fields: [bucketId], references: [id])
+    bucketId Int?
+}
