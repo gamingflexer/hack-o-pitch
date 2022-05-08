@@ -56,7 +56,6 @@ export default function Page() {
                 "Content-Type": "application/json",
             },
         });
-        getMoods();
     };
 
     return (
