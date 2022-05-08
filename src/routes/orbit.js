@@ -33,7 +33,7 @@ module.exports.kvAll = async (req, res, next) => {
 module.exports.logAdd = async (req, res, next) => {
     const db = repo.getLogDb(req.params.project_id);
     const log = req.body;
-    const hash = await db.add(log);
+    const hash = await db.add({log});
     res.send({ hash });
 };
 

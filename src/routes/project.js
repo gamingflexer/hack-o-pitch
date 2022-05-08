@@ -1,10 +1,10 @@
 const { prisma } = require("../db");
 
 const createProject = async (req, res) => {
-    const { name, description, seed_phrase } = req.body;
+    const { name, description } = req.body;
 
     const project = await prisma.project.create({
-        data: { name, description, seed_phrase },
+        data: { name, description },
     });
 
     res.json({ id: project.id });
