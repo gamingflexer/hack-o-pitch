@@ -14,7 +14,7 @@ const {
     readBucket,
 } = require("./routes/buckets");
 const { Router } = require("express");
-const { kvAll, kvGet, kvPut, kvDel, createDb } = require("./routes/orbit");
+const { kvAll, kvGet, kvPut, kvDel, createDb, logGet, logGetAll, logAdd } = require("./routes/orbit");
 
 const cors = require("cors");
 
@@ -39,11 +39,14 @@ projectRouter
     .get("/:project_id/buckets/:bucket_id", readBucket)
     .put("/:project_id/buckets/:bucket_id", updateBucket)
     .delete("/:project_id/buckets/:bucket_id", deleteBucket)
-    .post("/:project_id/kv", createDb)
+    .post("/:project_id/db", createDb)
     .get("/:project_id/kv", kvAll)
     .get("/:project_id/kv/:key", kvGet)
     .put("/:project_id/kv", kvPut) //{ key, value }
-    .delete("/:project_id/kv/:key", kvDel);
+    .delete("/:project_id/kv/:key", kvDel)
+    .get("/:project_id/log/:hash", logGet)
+    .get('/:project_id/log', logGetAll)
+    .put('/:project_id/log', logAdd);
 
 app.use("/api/projects", projectRouter);
 
