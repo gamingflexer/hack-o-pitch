@@ -33,19 +33,19 @@ module.exports.kvAll = async (req, res, next) => {
 module.exports.logAdd = async (req, res, next) => {
     const db = repo.getLogDb(req.params.project_id);
     const log = req.body;
-    const hash = await db.add({log});
+    const hash = await db.add(log);
     res.send({ hash });
 };
 
 module.exports.logGet = async (req, res, next) => {
     const db = repo.getLogDb(req.params.project_id);
     const { hash } = req.params;
-    const log = db.get(hash).map(e => e.payload.value);
-    res.send({ log });
+    const log = db.get(hash);
+    res.send(log);
 };
 
 module.exports.logGetAll = async (req, res, next) => {
     const db = repo.getLogDb(req.params.project_id);
-    const all = db.iterator(req.body).collect().map(e => e.payload.value);
+    const all = db.iterator({limit: -1}).collect().map(e => e.payload.value);
     res.send(all);
 }

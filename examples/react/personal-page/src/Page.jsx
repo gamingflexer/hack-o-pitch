@@ -14,12 +14,11 @@ export default function Page() {
         setContacts(contacts);
     };
 
-    // const getMoods = async () => {
-    //     const url = "http://localhost:3000/api/projects/1/log";
-    //     const all = await fetch(url).then(res => res.json());
-    //     setMoods(all);
-    //     console.log(all);
-    // };
+    const getMoods = async () => {
+        const url = "http://localhost:3000/api/projects/1/log";
+        const all = await fetch(url).then(res => res.json());
+        setMoods(all.map(({ mood }) => mood));
+    };
 
     const initDb = async () => {
         const url = "http://localhost:3000/api/projects/1/db";
@@ -27,7 +26,7 @@ export default function Page() {
     };
 
     useEffect(() => {
-        initDb().then(() => getContacts());
+        getContacts().then(() => getMoods());
     }, []);
 
     const uploadContact = async contact => {
@@ -48,14 +47,16 @@ export default function Page() {
 
     const uploadMood = async text => {
         const url = "http://localhost:3000/api/projects/1/log";
+        console.log(text);
         await fetch(url, {
             method: "PUT",
-            body: text,
+            body: JSON.stringify({ mood: text }),
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
             },
         });
+        getMoods();
     };
 
     return (
@@ -67,9 +68,9 @@ export default function Page() {
             ))}
             <h1>Mood Log</h1>
             <MoodForm addMood={uploadMood} />
-            {/* {moods.map((mood, idx) => (
+            {moods.map((mood, idx) => (
                 <p key={idx}>{mood}</p>
-            ))} */}
+            ))}
         </div>
     );
 }
@@ -117,7 +118,7 @@ function MoodForm({ addMood }) {
     const [mood, setMood] = useState("");
     const handleSubmit = e => {
         e.preventDefault();
-        addMood(e.target.value);
+        addMood(mood);
         setMood("");
     };
     return (
