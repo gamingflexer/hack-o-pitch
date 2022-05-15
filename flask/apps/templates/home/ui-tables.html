@@ -1,0 +1,132 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header">
+        <h4 class="card-title"> Access Logs</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table tablesorter " id="">
+            <thead class=" text-primary">
+              <tr>
+                <th>
+                  Client
+                </th>
+                <th>
+                  Method
+                </th>
+                <th>
+                  Request
+                </th>
+                <th class="text-center">
+                  Status
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  37.152.163.59
+                </td>
+                <td>
+                  GET
+                </td>
+                <td>
+                  /image/29314?name=%D8%AF%DB%8C%D8%A8%D8%A7-7.j...	
+                </td>
+                <td class="text-center">
+                  200	
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  86.104.110.254
+                </td>
+                <td>
+                  GET
+                </td>
+                <td>
+                  /static/images/zanbil-kharid.png	
+                </td>
+                <td class="text-center">
+                  404
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  5.125.254.169
+                </td>
+                <td>
+                  GET
+                </td>
+                <td>
+                  /static/images/next.png
+                </td>
+                <td class="text-center">
+                  200	
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  85.9.73.119	
+                </td>
+                <td>
+                  GET
+                </td>
+                <td>
+                  /static/images/checked.png
+                </td>
+                <td class="text-center">
+                  200	
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  65.49.68.192
+                </td>
+                <td>
+                  GET
+                </td>
+                <td>
+                  /image/29314?name=%D8%AF%DB%8C%D8%A8%D8%A7-4.j...	
+                </td>
+                <td class="text-center">
+                  200	
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="card  card-plain">
+      <div class="card-header">
+        <h4 class="card-title"> UPLOAD</h4>
+        <p class="category"> Logs here to get Anyaltics</p>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+
+          <!-- ADD A UPlOAD BUTTON HERE -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

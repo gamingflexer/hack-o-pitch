@@ -7,4 +7,38 @@ Analytics/data/access.log
 Analytics/files/.ipynb_checkpoints/Basics-jvsc-e9c1de1a-f9cb-4c49-830d-bd079b8b9900-checkpoint.ipynb
 Analytics/data/client_hostname.csv
 Analytics/data/web_server.log
-.gitignore
+
+
+# byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# tests and coverage
+*.pytest_cache
+.coverage
+
+# database & logs
+*.db
+*.sqlite3
+*.log
+
+# venv
+env
+venv
+
+# other
+.DS_Store
+
+# sphinx docs 
+_build
+_static
+_templates
+
+# javascript
+package-lock.json
+.vscode/symbols.json
+
+apps/static/assets/node_modules
+apps/static/assets/yarn.lock
+apps/static/assets/.temp
+
