@@ -1,3 +1,10 @@
 /node_modules
 db.sqlite3
 orbitdb/
+Analytics/data/access.log
+.gitignore
+.gitignore
+Analytics/files/.ipynb_checkpoints/Basics-jvsc-e9c1de1a-f9cb-4c49-830d-bd079b8b9900-checkpoint.ipynb
+Analytics/data/client_hostname.csv
+Analytics/data/web_server.log
+.gitignore
