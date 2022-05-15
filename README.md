@@ -20,7 +20,7 @@ Step 1: Change the current directory to Flask-backend
 Step 2: Set up FLASK_APP
 (For Linux or Mac)
 ```sh
-(venv) $ `set FLASK_APP=run.py`
+(venv) $ `export FLASK_APP=run.py`
 ```
 
 (For Windows)
