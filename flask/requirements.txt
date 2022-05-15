@@ -15,4 +15,5 @@ flask_mysqldb
 psycopg2
 flask_mysqldb
 mysql.connector
-flask_sqlalchemy
+decouple
+flask_migrate
