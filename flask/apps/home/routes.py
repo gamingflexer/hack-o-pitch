@@ -12,6 +12,9 @@ def index():
 
     return render_template('home/index.html', segment='index')
 
+@blueprint.route('/home')
+def home():
+    return render_template('home.html')
 
 @blueprint.route('/<template>')
 @login_required
