@@ -8,10 +8,12 @@ generator client {
 }
 
 model Project {
-    id          Int      @id @default(autoincrement())
+    id          Int        @id @default(autoincrement())
     name        String
     description String?
     buckets     Bucket[]
+    kvstores    KV[]
+    logstores   Logstore[]
 }
 
 model Bucket {
@@ -28,4 +30,16 @@ model File {
     name     String
     Bucket   Bucket? @relation(fields: [bucketId], references: [id])
     bucketId Int?
+}
+
+model Logstore {
+    address   String   @unique
+    Project   Project? @relation(fields: [projectId], references: [id])
+    projectId Int?
+}
+
+model KV {
+    address   String   @unique
+    Project   Project? @relation(fields: [projectId], references: [id])
+    projectId Int?
 }
