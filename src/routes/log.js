@@ -9,6 +9,12 @@ module.exports.createLogStore = async (req, res) => {
     res.status(204).send();
 };
 
+module.exports.getLogStores = async (req, res) => {
+    const { project_id } = req.params;
+    const logStores = await prisma.logstore.findMany({ where: { projectId: Number(project_id) } });
+    res.send(logStores.map(({ address }) => address));
+};
+
 module.exports.logGet = async (req, res) => {
     const { project_id, name } = req.params;
     const { hash } = req.body;

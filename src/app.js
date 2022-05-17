@@ -16,8 +16,8 @@ const {
 const { Router } = require("express");
 
 const cors = require("cors");
-const { createKvStore, kvGetAll, kvGet, kvPut, kvDel } = require("./routes/kv");
-const { logGet, logGetAll, logAdd, createLogStore } = require("./routes/log");
+const { createKvStore, kvGetAll, kvGet, kvPut, kvDel, getKvStores } = require("./routes/kv");
+const { logGet, logGetAll, logAdd, createLogStore, getLogStores } = require("./routes/log");
 
 const app = express();
 
@@ -41,11 +41,13 @@ projectRouter
     .put("/:project_id/buckets/:bucket_id", updateBucket)
     .delete("/:project_id/buckets/:bucket_id", deleteBucket)
     .post("/:project_id/kv/create", createKvStore)
+    .get('/:project_id/kv', getKvStores)
     .get("/:project_id/kv/:name/all", kvGetAll)
     .get("/:project_id/kv/:name", kvGet)
     .post("/:project_id/kv/:name", kvPut)
     .delete("/:project_id/kv/:name", kvDel)
     .post("/:project_id/log/create", createLogStore)
+    .get('/:project_id/log', getLogStores)
     .get("/:project_id/log/:name", logGet)
     .get("/:project_id/log/:name/all", logGetAll)
     .post("/:project_id/log/:name", logAdd);
