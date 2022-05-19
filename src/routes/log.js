@@ -22,7 +22,7 @@ module.exports.createLogStore = async (req, res) => {
 module.exports.getLogStores = async (req, res) => {
     const { project_id } = req.params;
     const logStores = await prisma.logstore.findMany({ where: { projectId: Number(project_id) } });
-    res.send(logStores.map(({ address }) => address));
+    res.send(logStores);
 };
 
 module.exports.logGet = async (req, res) => {

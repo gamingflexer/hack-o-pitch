@@ -24,7 +24,7 @@ module.exports.createKvStore = async (req, res) => {
 module.exports.getKvStores = async (req, res) => {
     const { project_id } = req.params;
     const kvStores = await prisma.kV.findMany({ where: { projectId: Number(project_id) } });
-    res.send(kvStores.map(({ address }) => address));
+    res.send(kvStores);
 };
 
 module.exports.kvGet = async (req, res) => {
