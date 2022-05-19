@@ -33,12 +33,14 @@ model File {
 }
 
 model Logstore {
-    address   String   @unique
+    id        Int      @id @default(autoincrement())
+    address   String
     Project   Project? @relation(fields: [projectId], references: [id])
     projectId Int?
 }
 
 model KV {
+    id        Int      @id @default(autoincrement())
     address   String   @unique
     Project   Project? @relation(fields: [projectId], references: [id])
     projectId Int?

@@ -2,6 +2,7 @@ const { prisma } = require("../db");
 
 const createProject = async (req, res) => {
     const { name, description } = req.body;
+
     const project = await prisma.project.create({
         data: { name, description },
     });
@@ -27,11 +28,11 @@ const allProjects = async (req, res) => {
 
 const updateProject = async (req, res) => {
     const { project_id } = req.params;
-    const { name, description, seed_phrase } = req.body;
+    const { name, description } = req.body;
 
     await prisma.project.update({
         where: { id: Number(project_id) },
-        data: { name, description, seed_phrase },
+        data: { name, description },
     });
 
     res.status(204).send();
