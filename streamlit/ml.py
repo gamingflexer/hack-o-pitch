@@ -2,45 +2,66 @@ import streamlit as st
 import pandas as pd
 from bokeh.plotting import figure
 import numpy as np
+import plotly.express as px
 
+st.header("Hii...")
+st.video("/Users/cosmos/Desktop/hack-o-pitch/Analytics/header.mp4")
 
 uploaded_file = st.file_uploader("Choose a file")
+
+
 if uploaded_file is not None:
      st.markdown("""---""")
 
-     data = pd.read_csv(uploaded_file)
+     try:
+          data = pd.read_csv(uploaded_file)
+     except:
+          data = pd.read_csv(uploaded_file,squeeze=True)
+          
      st.write(data)
      
-     st.markdown("""---""")
+     try:
+          st.markdown("""---""")
 
-     st.write("Status Request Line Chart")
-     st.line_chart(data['status'])
+          st.write("Most Popular Methods by the Users")
+          st.bar_chart(data['Methods'].value_counts())
+          
+          st.markdown("""---""")
+
+          st.write("Most Popular URLs by the Users")
+          st.bar_chart(data['URL_new'].value_counts().head(40))
+          
+          st.markdown("""---""")
+
+          st.write("Most Popular Months of Logins")
+          st.bar_chart(data['month'].value_counts().head(40))
+          
+          st.markdown("""---""")
+
+          st.write("Most Popular Days of Logins")
+          st.bar_chart(data['day'].value_counts().head(40))
+          
+          st.markdown("""---""")
+
+          st.write("Most Popular statuses for the Users")
+          st.bar_chart(data['Status'].value_counts().head(40))
+          
+          st.markdown("""---""")     
+     except:
+          st.write("Clean The Data...")
      
-     st.markdown("""---""")
+     
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
+
+
 
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-chart_data = pd.DataFrame(
-     np.random.randn(20, 3),
-     columns=['a', 'b', 'c'])
-
-st.area_chart(chart_data)
-
-# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
-st.markdown("""---""")
-chart_data = pd.DataFrame(
-     np.random.randn(50, 3),
-     columns=["a", "b", "c"])
-
-st.bar_chart(chart_data)
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-st.markdown("""---""")
-df = pd.DataFrame(
-     np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
-     columns=['lat', 'lon'])
 
-st.map(df)
+
+
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
