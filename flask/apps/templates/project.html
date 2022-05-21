@@ -1,12 +1,15 @@
 {% extends "layouts/base.html" %}
-{{pas}}
+{{pas}} <!-- Project ID  -->
+{{pas2}} <!-- Key Value  -->
+<!-- Buckets -->
+ <!-- Log Store -->
 
 {% block title %} UI Notifications {% endblock %} 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-
+<!-- {{pas2}} -->
 
 <div class="col">
   <div class="row-md-12">
@@ -34,15 +37,17 @@
           <h4 class="card-title"> Key - Value Store</h4>
           <p class="category"> Configuration</p>
         </div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <input type="text" class="form-control" id="key" aria-describedby="key" placeholder="Enter Key">
-            <br>
-            <input type="text" class="form-control" id="value" aria-describedby="Value" placeholder="Enter Value">
-            <br>
-            <a class="btn btn-primary btn-lg" href="#" role="button"  target="_blank" onclick="demo.showNotification('top','right')">Create</a>
-            <a class="btn btn-primary btn-lg" href="#" role="button"  target="_blank">Show</a>      </div>
-        </div>
+        <form method="POST" action="/create_key_value" autocomplete="off" class="">
+          <div class="card-body">
+            <div class="table-responsive">
+              <input type="text" class="form-control" id="key" aria-describedby="key" placeholder="Enter Key">
+              <br>
+              <input type="text" class="form-control" id="value" aria-describedby="Value" placeholder="Enter Value">
+              <br>
+              <a class="btn btn-primary btn-lg" href="#" role="button"  target="_blank" onclick="demo.showNotification('top','right')">Create</a>
+              <a class="btn btn-primary btn-lg" href="#" role="button"  target="_blank">Show</a>      </div>
+          </div>
+        </form>
       </div>
     </div>
     
@@ -81,74 +86,35 @@
           </div>
         </div>
       </div>
+      <!-- BUCKETS  -->
       <div class="card-body ">
         <div class="table-full-width table-responsive">
           <table class="table">
             <tbody>
-              <tr>
-                <td>
-                  <p class="title">Bucket 1</p>
-                  <p class="text-muted">text</p>
-                </td>
-                <td class="td-actions text-right">
-                  <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                    <i class="tim-icons icon-pencil"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p class="title">Bucket 2</p>
-                  <p class="text-muted">text</p>
-                </td>
-                <td class="td-actions text-right">
-                  <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                    <i class="tim-icons icon-pencil"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p class="title">Bucket 3</p>
-                  <p class="text-muted">text</p>
-                </td>
-                <td class="td-actions text-right">
-                  <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                    <i class="tim-icons icon-pencil"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p class="title">Bucket 4</p>
-                  <p class="text-muted">text</p>
-                </td>
-                <td class="td-actions text-right">
-                  <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                    <i class="tim-icons icon-pencil"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p class="title">Bucket 5</p>
-                  <p class="text-muted">text </p>
-                </td>
-                <td class="td-actions text-right">
-                  <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                    <i class="tim-icons icon-pencil"></i>
-                  </button>
-                </td>
+              {% for data in pas3 %}
+                <tr>
+                  <td>
+                    <p class="title">{{data['']}}</p>
+                    <p class="text-muted">{{data['']}}</p>
+                  </td>
+                  <td class="td-actions text-right">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                      <i class="tim-icons icon-pencil"></i>
+                    </button>
+                  </td>
+                </tr>
+                {% endfor %}
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
+
   <div class="col-lg-6 col-md-12">
     <div class="card ">
       <div class="card-header">
-        <h4 class="card-title"> Key - Value Pairs</h4>
+        <h4 class="card-title"> Key - Value </h4>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -156,200 +122,76 @@
             <thead class=" text-primary">
               <tr>
                 <th>
-                  Client
+                  Key - Id      
                 </th>
-                <th>
-                  Method
+                <th lass="text-center">
+                  Address
                 </th>
-                <th>
-                  Request
-                </th>
-                <th class="text-center">
-                  Status
-                </th>
+                <!-- <th>
+                  ProjectId
+                </th> -->
               </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  37.152.163.59
-                </td>
-                <td>
-                  GET
-                </td>
-                <td>
-                  /image/29314?name=%D8%AF%DB%8C%D8%A8%D8%A7-7.j...	
-                </td>
-                <td class="text-center">
-                  200	
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  86.104.110.254
-                </td>
-                <td>
-                  GET
-                </td>
-                <td>
-                  /static/images/zanbil-kharid.png	
-                </td>
-                <td class="text-center">
-                  404
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  5.125.254.169
-                </td>
-                <td>
-                  GET
-                </td>
-                <td>
-                  /static/images/next.png
-                </td>
-                <td class="text-center">
-                  200	
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  85.9.73.119	
-                </td>
-                <td>
-                  GET
-                </td>
-                <td>
-                  /static/images/checked.png
-                </td>
-                <td class="text-center">
-                  200	
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  65.49.68.192
-                </td>
-                <td>
-                  GET
-                </td>
-                <td>
-                  /image/29314?name=%D8%AF%DB%8C%D8%A8%D8%A7-4.j...	
-                </td>
-                <td class="text-center">
-                  200	
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div><div class="col-lg-6 col-md-12">
-    <div class="card ">
-      <div class="card-header">
-        <h4 class="card-title"> Log Value Store</h4>
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table tablesorter " id="">
-            <thead class=" text-primary">
-              <tr>
-                <th>
-                  Client
-                </th>
-                <th>
-                  Method
-                </th>
-                <th>
-                  Request
-                </th>
-                <th class="text-center">
-                  Status
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  37.152.163.59
-                </td>
-                <td>
-                  GET
-                </td>
-                <td>
-                  /image/29314?name=%D8%AF%DB%8C%D8%A8%D8%A7-7.j...	
-                </td>
-                <td class="text-center">
-                  200	
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  86.104.110.254
-                </td>
-                <td>
-                  GET
-                </td>
-                <td>
-                  /static/images/zanbil-kharid.png	
-                </td>
-                <td class="text-center">
-                  404
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  5.125.254.169
-                </td>
-                <td>
-                  GET
-                </td>
-                <td>
-                  /static/images/next.png
-                </td>
-                <td class="text-center">
-                  200	
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  85.9.73.119	
-                </td>
-                <td>
-                  GET
-                </td>
-                <td>
-                  /static/images/checked.png
-                </td>
-                <td class="text-center">
-                  200	
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  65.49.68.192
-                </td>
-                <td>
-                  GET
-                </td>
-                <td>
-                  /image/29314?name=%D8%AF%DB%8C%D8%A8%D8%A7-4.j...	
-                </td>
-                <td class="text-center">
-                  200	
-                </td>
-              </tr>
+              <tbody>
+              {% for data in pas2 %}
+                <tr>
+                  <td>
+                    {{data['id']}}
+                  </td>
+                  <td>
+                    {{data['address']}}
+                  </td>
+                  <!-- <td>
+                    {{data['projectId']}}
+                </tr> -->
+              {% endfor %}
+
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
-
 </div>
 
-
+<!-- Log Store -->
+<div>
+  <div class="card card-tasks">
+  <div class="card-header ">
+    <h6 class="title d-inline">Log Store</h6>
+    <!-- <div class="dropdown"> -->
+      <!-- <button type="button" class="btn btn-link dropdown-toggle btn-icon" data-toggle="dropdown">
+        <i class="tim-icons icon-settings-gear-63"></i>
+      </button>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="#pablo">Action</a>
+        <a class="dropdown-item" href="#pablo">Another action</a>
+        <a class="dropdown-item" href="#pablo">Something else</a>
+      </div> -->
+    </div>
+  </div>
+  <!-- BUCKETS  -->
+  <div class="card-body ">
+    <div class="table-full-width table-responsive">
+      <table class="table">
+        <tbody>
+          {% for data in pas4 %}
+            <tr>
+              <td>
+                <p class="title">{{data['']}}</p>
+                <p class="text-muted">{{data['']}}</p>
+              </td>
+              <td class="td-actions text-right">
+                <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                  <i class="tim-icons icon-pencil"></i>
+                </button>
+              </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div></div>
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->

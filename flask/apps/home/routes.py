@@ -5,7 +5,7 @@ from flask import render_template, request
 from flask_login import login_required
 from jinja2 import TemplateNotFound
 import requests
-
+from apps.home.function import *
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 @blueprint.route('/index')
@@ -21,28 +21,33 @@ def home():
 
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-@blueprint.route('/project')
+@blueprint.route('/project', methods=["POST", "GET"])
 def project():
-    try:
-        response = requests.get("http://139.59.87.149:3000/api/projects/")
-        projects = response.json()
-    except:
-        projects = [{'id': "",'name':"",'description':""}]
-    return render_template('project.html',pas = projects)
+    projects = projectall()
+    keyvalue = keyvalueall()
+    return render_template('project.html',pas = projects,pas2 = keyvalue )
 
-@blueprint.route('/upload_bucket')
+@blueprint.route('/upload_bucket', methods=["POST", "GET"])
 def upload_bucket():
     return render_template('project.html')
 
-@blueprint.route('/create_key_value')
+@blueprint.route('/create_key_value', methods=["POST", "GET"])
 def key_value():
-    return render_template('project.html')
+    projects = projectall()
+    keyvalue = keyvalueall()
+    key = request.form.get('key')
+    value = request.form.get('value')
+    print(key,value)
+    return render_template('project.html',pas = projects,pas2 = keyvalue)
 
-@blueprint.route('/logstore')
+@blueprint.route('/logstore', methods=["POST", "GET"])
 def logstore():
     return render_template('project.html')
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
+
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 @blueprint.route('/<template>')
 @login_required

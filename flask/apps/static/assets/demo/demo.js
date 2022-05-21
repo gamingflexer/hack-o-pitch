@@ -86,7 +86,7 @@ demo = {
       type: 'line',
       responsive: true,
       data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"],
         datasets: [{
           label: "Active Users",
           borderColor: "#f96332",
@@ -358,7 +358,7 @@ demo = {
     gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
 
     var data = {
-      labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+      labels: ["10:00", "11:00", "12:00", "13:00", "14:00"],
       datasets: [{
         label: "Data",
         fill: true,
@@ -394,7 +394,7 @@ demo = {
     gradientStroke.addColorStop(0, 'rgba(66,134,121,0)'); //green colors
 
     var data = {
-      labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV'],
+      labels: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00"],
       datasets: [{
         label: "My First dataset",
         fill: true,
@@ -410,7 +410,7 @@ demo = {
         pointHoverRadius: 4,
         pointHoverBorderWidth: 15,
         pointRadius: 4,
-        data: [90, 27, 60, 12, 80],
+        data: [90, 27, 60, 12, 80,120],
       }]
     };
 
@@ -423,7 +423,7 @@ demo = {
 
 
 
-    var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    var chart_labels = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"];
     var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
 
 
@@ -498,9 +498,9 @@ demo = {
         display: false
       },
       data: {
-        labels: ['USA', 'GER', 'AUS', 'UK', 'RO', 'BR'],
+        labels: ['1', '2', '3', '4', '5', '6'],
         datasets: [{
-          label: "Countries",
+          label: "Projects",
           fill: true,
           backgroundColor: gradientStroke,
           hoverBackgroundColor: gradientStroke,
@@ -508,7 +508,7 @@ demo = {
           borderWidth: 2,
           borderDash: [],
           borderDashOffset: 0.0,
-          data: [53, 20, 10, 80, 100, 45],
+          data: [120, 33, 42, 48, 59, 80],
         }]
       },
       options: gradientBarChartConfiguration
