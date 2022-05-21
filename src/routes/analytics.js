@@ -15,6 +15,14 @@ module.exports.createAnalyticsStore = async (req, res) => {
     res.send({ msg: "OK" });
 };
 
+module.exports.analyticsStatus = async (req, res) => {
+    const { project_id } = req.params;
+    if (await prisma.docstore.findOne({ where: { projectId: Number(project_id) } })) {
+        res.send({ status: "up" });
+    }
+    res.status(404).send({ status: "down" });
+};
+
 module.exports.postAnalytics = async (req, res) => {
     const { project_id } = req.params;
     const { address } = await prisma.docstore.findFirst({
@@ -52,7 +60,10 @@ module.exports.getAnalytics = async (req, res) => {
     const filter =
         (minTime && maxTime && (doc => doc.time >= minTime && doc.time <= maxTime)) || (doc => doc);
     const all = docstore.query(filter);
-    const formatted =
-        format === "timeKey" ? all.map(({ time, ...rest }) => ({ [time]: rest })) : all;
+    const timeKeyFormatter = docs =>
+        docs
+            .map(({ time, ...rest }) => ({ [time]: rest }))
+            .reduce((acc, item) => ({ ...acc, ...item }));
+    const formatted = format === "timeKey" ? timeKeyFormatter(all) : all;
     res.send(formatted);
 };

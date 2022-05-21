@@ -19,7 +19,12 @@ const cors = require("cors");
 const { createKvStore, kvGetAll, kvGet, kvPut, kvDel, getKvStores } = require("./routes/kv");
 const { logGet, logGetAll, logAdd, createLogStore, getLogStores } = require("./routes/log");
 const { projectValidator, databaseInstanceValidator } = require("./middleware");
-const { createAnalyticsStore, getAnalytics, postAnalytics } = require("./routes/analytics");
+const {
+    createAnalyticsStore,
+    getAnalytics,
+    postAnalytics,
+    analyticsStatus,
+} = require("./routes/analytics");
 
 const app = express();
 
@@ -54,6 +59,7 @@ projectRouter
     .get("/:project_id/log/:database_id/all", databaseInstanceValidator, logGetAll)
     .post("/:project_id/log/:database_id", databaseInstanceValidator, logAdd)
     .post("/:project_id/analytics/init", createAnalyticsStore)
+    .get("/:project_id/analytics/status", analyticsStatus)
     .get("/:project_id/analytics", getAnalytics)
     .post("/:project_id/analytics", postAnalytics);
 
