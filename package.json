@@ -1,12 +1,33 @@
 {
-    "dependencies": {
-        "@prisma/client": "^3.12.0",
-        "cors": "^2.8.5",
-        "dotenv": "^10.0.0",
-        "express": "^4.17.3",
-        "ipfs": "^0.62.2",
-        "ipfs-http-client": "^56.0.2",
-        "orbit-db": "^0.28.3",
-        "prisma": "^3.12.0"
-    }
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.12.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.18.1",
+    "ipfs": "^0.62.2",
+    "ipfs-http-client": "^56.0.2",
+    "nanoid": "^3.3.4",
+    "orbit-db": "^0.28.3",
+    "prisma": "^3.12.0"
+  },
+  "name": "hack-o-pitch",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gamingflexer/hack-o-pitch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gamingflexer/hack-o-pitch/issues"
+  },
+  "homepage": "https://github.com/gamingflexer/hack-o-pitch#readme"
 }

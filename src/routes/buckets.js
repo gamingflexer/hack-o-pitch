@@ -36,12 +36,12 @@ async function updateBucket(req, res, next) {
     const { project_id, bucket_id } = req.params;
     const { name } = req.body;
 
-    await prisma.bucket.update({
+    const bucket = await prisma.bucket.update({
         where: { id: Number(bucket_id), projectId: Number(project_id) },
         data: { name },
     });
 
-    res.send({ msg: "OK" });
+    res.send(bucket);
 }
 
 async function deleteBucket(req, res, next) {
@@ -49,7 +49,7 @@ async function deleteBucket(req, res, next) {
 
     await prisma.bucket.delete({ where: { id: Number(project_id) } });
 
-    res.send({ msg: "OK" });
+    res.status(204).send();
 }
 
 module.exports = { createBucket, readBucket, allBuckets, updateBucket, deleteBucket };
