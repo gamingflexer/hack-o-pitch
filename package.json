@@ -9,6 +9,7 @@
     "express": "^4.18.1",
     "ipfs": "^0.62.2",
     "ipfs-http-client": "^56.0.2",
+    "nanoid": "^3.3.4",
     "orbit-db": "^0.28.3",
     "prisma": "^3.12.0"
   },
