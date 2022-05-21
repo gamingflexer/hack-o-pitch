@@ -17,7 +17,7 @@ module.exports.createAnalyticsStore = async (req, res) => {
 
 module.exports.analyticsStatus = async (req, res) => {
     const { project_id } = req.params;
-    if (await prisma.docstore.findOne({ where: { projectId: Number(project_id) } })) {
+    if (await prisma.docstore.findFirst({ where: { projectId: Number(project_id) } })) {
         res.send({ status: "up" });
     }
     res.status(404).send({ status: "down" });
