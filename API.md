@@ -47,6 +47,42 @@ works the exact same way as the kv store except for two differences
 -   the endpoint will have /api/projects/:id/log instead of kv.
 -   instead of {key, value} you have to send {log}
 
+## analytics
 
-## buckets
-(soon)
+-   POST `/api/projects/project_id/analytics/init` **first** to initialize the analytics service
+-   GET `/api/projects/project_id/analytics/status` to check if the analytics service is running
+-   POST `/api/projects/project_id/analytics` to send analytics data
+    -   Format is {time (unix timestamp), resource_id, visitor_id, event_type, event_value}
+-   GET `/api/projects/project_id/analytics` to query the analytics data
+    -   querying options:
+        -   minTime and maxTime in request body to fetch data between those times
+        -   `?format=timeKey` query parameter to get the data like
+        ```json
+        [
+            {
+                "830231291209121": {
+                    "resource_id": "resource_id",
+                    "visitor_id": "visitor_id",
+                    "event_type": "event_type",
+                    "event_value": "event_value"
+                }
+            }
+        ]
+        ```
+        as opposed to
+        ```json
+        [
+            {
+                {
+                    "time": "830231291209121",
+                    "resource_id": "resource_id",
+                    "visitor_id": "visitor_id",
+                    "event_type": "event_type",
+                    "event_value": "event_value",
+                }
+            }
+        ]
+        ```
+        ```
+
+        ```
