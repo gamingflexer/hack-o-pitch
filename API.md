@@ -54,35 +54,47 @@ works the exact same way as the kv store except for two differences
 -   POST `/api/projects/project_id/analytics` to send analytics data
     -   Format is {time (unix timestamp), resource_id, visitor_id, event_type, event_value}
 -   GET `/api/projects/project_id/analytics` to query the analytics data
+
     -   querying options:
-        -   minTime and maxTime in request body to fetch data between those times
+
+        -   minTime and maxTime in request body to fetch data between those times (both in unix timestamp)
         -   `?format=timeKey` query parameter to get the data like
+
         ```json
-        [
-            {
-                "830231291209121": {
-                    "resource_id": "resource_id",
-                    "visitor_id": "visitor_id",
-                    "event_type": "event_type",
-                    "event_value": "event_value"
-                }
+        {
+            "830231291209121": {
+                "resource_id": "resource_id",
+                "visitor_id": "visitor_id",
+                "event_type": "event_type",
+                "event_value": "event_value"
+            },
+            "882032932849230": {
+                "resource_id": "resource_id",
+                "visitor_id": "visitor_id",
+                "event_type": "event_type",
+                "event_value": "event_value"
             }
-        ]
-        ```
-        as opposed to
-        ```json
-        [
-            {
-                {
-                    "time": "830231291209121",
-                    "resource_id": "resource_id",
-                    "visitor_id": "visitor_id",
-                    "event_type": "event_type",
-                    "event_value": "event_value",
-                }
-            }
-        ]
-        ```
+        }
         ```
 
+        as opposed to
+
+        ```json
+        [
+            {
+                "time": "830231291209121",
+                "resource_id": "resource_id",
+                "visitor_id": "visitor_id",
+                "event_type": "event_type",
+                "event_value": "event_value"
+            },
+            {
+                "time": "882032932849230",
+                "resource_id": "resource_id",
+                "visitor_id": "visitor_id",
+                "event_type": "event_type",
+                "event_value": "event_value"
+            }
+        ]
         ```
+        which is the normal output
