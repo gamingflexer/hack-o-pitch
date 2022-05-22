@@ -1,10 +1,12 @@
 {% extends "layouts/base.html" %}
-{{pas}} <!-- Project ID  -->
-{{pas2}} <!-- Key Value  -->
+{{pas}}
+<!-- Project ID  -->
+{{pas2}}
+<!-- Key Value  -->
 <!-- Buckets -->
- <!-- Log Store -->
+<!-- Log Store -->
 
-{% block title %} UI Notifications {% endblock %} 
+{% block title %} UI Notifications {% endblock %}
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
 
@@ -24,13 +26,14 @@
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <a class="btn btn-primary btn-lg" href="#" role="button"  target="_blank" onclick="demo.showNotification('top','right')">Upload</a>
-            <a class="btn btn-primary btn-lg" href="#" role="button"  target="_blank">Show</a>
+            <a class="btn btn-primary btn-lg" href="#" role="button" target="_blank"
+              onclick="demo.showNotification('top','right')">Upload</a>
+            <a class="btn btn-primary btn-lg" href="#" role="button" target="_blank">Show</a>
           </div>
         </div>
       </div>
     </div>
-    
+
     <div class="col-md-16">
       <div class="card">
         <div class="card-header">
@@ -40,17 +43,37 @@
         <form method="POST" action="/create_key_value" autocomplete="off" class="">
           <div class="card-body">
             <div class="table-responsive">
-              <input type="text" class="form-control" id="key" aria-describedby="key" placeholder="Enter Key">
+              <input type="text" class="form-control" name="key" aria-describedby="key" placeholder="Enter Key">
               <br>
-              <input type="text" class="form-control" id="value" aria-describedby="Value" placeholder="Enter Value">
+              <input type="text" class="form-control" name="value" aria-describedby="Value" placeholder="Enter Value">
               <br>
-              <a class="btn btn-primary btn-lg" href="#" role="button"  target="_blank" onclick="demo.showNotification('top','right')">Create</a>
-              <a class="btn btn-primary btn-lg" href="#" role="button"  target="_blank">Show</a>      </div>
+              <button type="submit" class="btn btn-primary btn-lg" role="button" target="_blank" onclick="demo.showNotification('top','right')">Create</button>
+              <a class="btn btn-primary btn-lg" href="#" role="button" target="_blank">Show</a>
+            </div>
           </div>
         </form>
       </div>
     </div>
-    
+    <div class="col-md-16">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Document Store</h4>
+          <p class="category"> Configuration</p>
+        </div>
+        <form method="POST" action="/document" autocomplete="off" class="">
+          <div class="card-body">
+            <div class="table-responsive">
+              <input type="text" class="form-control" name="key" aria-describedby="key" placeholder="Enter json">
+              <br>
+              <!-- <input type="text" class="form-control" name="value" aria-describedby="Value" placeholder="Enter Value">
+              <br> -->
+              <button type="submit" class="btn btn-primary btn-lg" role="button" target="_blank" onclick="demo.showNotification('top','right')">Create</button>
+              <a class="btn btn-primary btn-lg" href="#" role="button" target="_blank">Show</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
     <div class="col-md-16">
       <div class="card">
         <div class="card-header">
@@ -61,8 +84,10 @@
           <div class="table-responsive">
             <input type="text" class="form-control" id="log" aria-describedby="log" placeholder="Enter log">
             <br>
-            <a class="btn btn-primary btn-lg" href="#" role="button"  target="_blank" onclick="demo.showNotification('top','right')">Create</a>
-            <a class="btn btn-primary btn-lg" href="#" role="button"  target="_blank">Show</a>      </div>
+            <a class="btn btn-primary btn-lg" href="#" role="button" target="_blank"
+              onclick="demo.showNotification('top','right')">Create</a>
+            <a class="btn btn-primary btn-lg" href="#" role="button" target="_blank">Show</a>
+          </div>
         </div>
       </div>
     </div>
@@ -92,18 +117,18 @@
           <table class="table">
             <tbody>
               {% for data in pas3 %}
-                <tr>
-                  <td>
-                    <p class="title">{{data['']}}</p>
-                    <p class="text-muted">{{data['']}}</p>
-                  </td>
-                  <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                      <i class="tim-icons icon-pencil"></i>
-                    </button>
-                  </td>
-                </tr>
-                {% endfor %}
+              <tr>
+                <td>
+                  <p class="title">{{data['']}}</p>
+                  <p class="text-muted">{{data['']}}</p>
+                </td>
+                <td class="td-actions text-right">
+                  <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                    <i class="tim-icons icon-pencil"></i>
+                  </button>
+                </td>
+              </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>
@@ -122,7 +147,7 @@
             <thead class=" text-primary">
               <tr>
                 <th>
-                  Key - Id      
+                  Key - Id
                 </th>
                 <th lass="text-center">
                   Address
@@ -131,34 +156,35 @@
                   ProjectId
                 </th> -->
               </tr>
-              <tbody>
+            <tbody>
               {% for data in pas2 %}
-                <tr>
-                  <td>
-                    {{data['id']}}
-                  </td>
-                  <td>
-                    {{data['address']}}
-                  </td>
-                  <!-- <td>
+              <tr>
+                <td>
+                  {{data['id']}}
+                </td>
+                <td>
+                  {{data['address']}}
+                </td>
+                <!-- <td>
                     {{data['projectId']}}
                 </tr> -->
-              {% endfor %}
+                {% endfor %}
 
             </tbody>
           </table>
         </div>
       </div>
     </div>
+    
   </div>
 </div>
 
 <!-- Log Store -->
 <div>
   <div class="card card-tasks">
-  <div class="card-header ">
-    <h6 class="title d-inline">Log Store</h6>
-    <!-- <div class="dropdown"> -->
+    <div class="card-header ">
+      <h6 class="title d-inline">Log Store</h6>
+      <!-- <div class="dropdown"> -->
       <!-- <button type="button" class="btn btn-link dropdown-toggle btn-icon" data-toggle="dropdown">
         <i class="tim-icons icon-settings-gear-63"></i>
       </button>
@@ -175,23 +201,24 @@
       <table class="table">
         <tbody>
           {% for data in pas4 %}
-            <tr>
-              <td>
-                <p class="title">{{data['']}}</p>
-                <p class="text-muted">{{data['']}}</p>
-              </td>
-              <td class="td-actions text-right">
-                <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                  <i class="tim-icons icon-pencil"></i>
-                </button>
-              </td>
-            </tr>
-            {% endfor %}
+          <tr>
+            <td>
+              <p class="title">{{data['']}}</p>
+              <p class="text-muted">{{data['']}}</p>
+            </td>
+            <td class="td-actions text-right">
+              <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                <i class="tim-icons icon-pencil"></i>
+              </button>
+            </td>
+          </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>
   </div>
-</div></div>
+</div>
+</div>
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->

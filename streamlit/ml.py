@@ -4,11 +4,12 @@ from bokeh.plotting import figure
 import numpy as np
 import plotly.express as px
 
-st.header("Hii...")
+st.header("Analytics")
 st.video("/Users/cosmos/Desktop/hack-o-pitch/Analytics/header.mp4")
 
-uploaded_file = st.file_uploader("Choose a file")
+# uploaded_file = st.file_uploader("Choose a file")
 
+uploaded_file = "/Users/cosmos/Desktop/hack-o-pitch/Analytics/data/weblog.csv"
 
 if uploaded_file is not None:
      st.markdown("""---""")

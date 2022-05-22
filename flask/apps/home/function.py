@@ -16,3 +16,16 @@ def keyvalueall():
         projects = [{'id': "",'address':"",'projectId':""}]
     return projects
 
+def createkeyvalue(a,b):
+    data = {"key":a,"value":b}
+    requests.post("http://localhost:3000/api/projects/1/kv/1c",json=data)
+    print(requests)
+    print(data)
+    return "Created Key Value"
+
+def createdocument(a,b):
+    data = {"key":a,"value":b}
+    requests.post("http://localhost:3000/api/projects/1/kv/1c",json=data)
+    print(requests)
+    print(data)
+    return "Created Document Store"

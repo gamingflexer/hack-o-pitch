@@ -35,9 +35,23 @@ def upload_bucket():
 def key_value():
     projects = projectall()
     keyvalue = keyvalueall()
-    key = request.form.get('key')
-    value = request.form.get('value')
-    print(key,value)
+    if request.method == 'POST':
+        key = request.form.get('key')
+        value = request.form.get('value')
+        createkeyvalue(key,value)
+        
+        projects = projectall()
+        return render_template('project.html', pas=projects, pas2=keyvalue)
+    return render_template('project.html',pas = projects,pas2 = keyvalue)
+
+@blueprint.route('/document', methods=["POST", "GET"])
+def document_save():
+    projects = projectall()
+    keyvalue = keyvalueall()
+    if request.method == 'POST':
+        key = request.form.get('key')
+        value = request.form.get('value')
+        return render_template('project.html', pas=projects, pas2=keyvalue)
     return render_template('project.html',pas = projects,pas2 = keyvalue)
 
 @blueprint.route('/logstore', methods=["POST", "GET"])
