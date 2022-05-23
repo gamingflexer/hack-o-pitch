@@ -1,5 +1,6 @@
 # hack-o-pitch
 
+### PPT - https://docs.google.com/presentation/d/1wf_ZQv4dzlsmJjGDBOtzEQmebTqBBcHtdwSijlyWz-s/edit?usp=sharing
 
 ### Flask Backend
 ==================================
