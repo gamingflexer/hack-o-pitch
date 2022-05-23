@@ -1,5 +1,6 @@
 import requests
 
+# functions to work with the API - some remaining
 def projectall():
     try:
         response = requests.get("http://localhost:3000/api/projects/")
