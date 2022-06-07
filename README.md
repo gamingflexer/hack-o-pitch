@@ -47,6 +47,13 @@ To run the server use the following command:
 
 ```
 
+# IPFS
+
+```
+(venv) $ ipfs init
+(venv) $ ipfs daemon --enable-pubsub-experiment
+
+```
 
 # API Endpoints List
 
