@@ -12,7 +12,7 @@ jinja2==3.0.3
 flask-restx==0.5.1
 Werkzeug==2.0.3
 flask_mysqldb
-psycopg2
 mysql.connector
-decouple
+python-decouple
 pymysql
+psycopg2
