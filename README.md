@@ -54,7 +54,13 @@ To run the server use the following command:
 (venv) $ ipfs daemon --enable-pubsub-experiment
 
 ```
+# Prism
 
+```
+(venv) $ npm i prism
+(venv) $ ./node_modules/.bin/prisma2 generate
+
+```
 # API Endpoints List
 
 ```
